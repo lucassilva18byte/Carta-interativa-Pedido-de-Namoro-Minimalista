@@ -1,135 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Para Você</title>
-  <style>
-    body {
-      margin: 0;
-      background: linear-gradient(135deg, #f8f9fa, #eef1f4);
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      color: #1a1a1a;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<title>Para Você</title>
+<style>
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #e9edf1, #dfe5ec);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #1f2933;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
 
-    .card {
-      background: #ffffff;
-      padding: 60px 50px;
-      border-radius: 16px;
-      max-width: 600px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      position: relative;
-    }
+.card {
+  background: #ffffff;
+  padding: 60px;
+  border-radius: 18px;
+  max-width: 600px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+}
 
-    .linha {
-      width: 60px;
-      height: 3px;
-      background: #111;
-      margin: 0 auto 30px auto;
-      border-radius: 2px;
-    }
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: #3b82f6;
+}
 
-    h1 {
-      font-weight: 500;
-      font-size: 1.8rem;
-      margin-bottom: 25px;
-      letter-spacing: 1px;
-    }
+h1 {
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
 
-    h2 {
-      font-weight: 500;
-      margin-top: 20px;
-    }
+.frase {
+  display: none;
+  font-size: 1.1rem;
+  margin: 15px 0;
+  color: #374151;
+  animation: fadeIn 0.8s ease-in-out;
+}
 
-    .frase {
-      display: none;
-      font-size: 1.1rem;
-      margin: 15px 0;
-      color: #444;
-      animation: fadeIn 0.8s ease-in-out;
-    }
+button {
+  margin-top: 25px;
+  padding: 10px 30px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background: #3b82f6;
+  color: white;
+  transition: 0.3s;
+  position: relative;
+}
 
-    button {
-      margin-top: 25px;
-      padding: 10px 28px;
-      font-size: 0.95rem;
-      border-radius: 30px;
-      border: 1px solid #111;
-      cursor: pointer;
-      background: transparent;
-      color: #111;
-      transition: 0.3s;
-      position: relative;
-    }
+button:hover {
+  background: #2563eb;
+}
 
-    button:hover {
-      background: #111;
-      color: #fff;
-    }
+.hidden { display: none; }
 
-    .hidden {
-      display: none;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 <body>
-  <div class="card">
-    <div class="linha"></div>
-    <h1>Para Você</h1>
+<div class="card">
+<h1>Para Você</h1>
 
-    <p class="frase">Desde o dia em que você entrou na minha vida, tudo mudou.</p>
-    <p class="frase">Os meus dias ficaram mais leves.</p>
-    <p class="frase">Meu coração encontrou paz.</p>
-    <p class="frase">E eu descobri que o amor pode ser simples e eterno.</p>
-    <p class="frase">Por isso hoje eu preciso te perguntar algo…</p>
+<p class="frase">Desde o dia em que você entrou na minha vida, tudo mudou.</p>
+<p class="frase">Os meus dias ficaram mais leves.</p>
+<p class="frase">Meu coração encontrou paz.</p>
+<p class="frase">E eu descobri que o amor pode ser simples e eterno.</p>
+<p class="frase">Por isso hoje eu preciso te perguntar algo…</p>
 
-    <button onclick="mostrarFrase()">Continuar</button>
+<button onclick="mostrarFrase()">Continuar</button>
 
-    <div id="pedido" class="hidden">
-      <h2>Você aceita continuar essa história comigo?</h2>
-      <button onclick="aceitou()">Sim</button>
-      <button onmouseover="fugir(this)">Não</button>
-    </div>
+<div id="pedido" class="hidden">
+<h2>Você aceita continuar essa história comigo?</h2>
+<button onclick="aceitou()">Sim</button>
+<button onmouseover="fugir(this)">Não</button>
+</div>
 
-    <div id="final" class="hidden">
-      <h2>Eu escolho você todos os dias.</h2>
-    </div>
-  </div>
+<div id="final" class="hidden">
+<h2>Eu escolho você todos os dias.</h2>
+</div>
+</div>
 
-  <script>
-    let index = 0;
-    const frases = document.querySelectorAll(".frase");
-    const botao = document.querySelector("button");
+<script>
+let index = 0;
+const frases = document.querySelectorAll(".frase");
+const botao = document.querySelector("button");
 
-    function mostrarFrase() {
-      if (index < frases.length) {
-        frases[index].style.display = "block";
-        index++;
-      } else {
-        botao.style.display = "none";
-        document.getElementById("pedido").classList.remove("hidden");
-      }
-    }
+function mostrarFrase() {
+  if (index < frases.length) {
+    frases[index].style.display = "block";
+    index++;
+  } else {
+    botao.style.display = "none";
+    document.getElementById("pedido").classList.remove("hidden");
+  }
+}
 
-    function fugir(btn) {
-      btn.style.position = "absolute";
-      btn.style.top = Math.random() * 200 + "px";
-      btn.style.left = Math.random() * 200 + "px";
-    }
+function fugir(btn) {
+  btn.style.position = "absolute";
+  btn.style.top = Math.random() * 200 + "px";
+  btn.style.left = Math.random() * 200 + "px";
+}
 
-    function aceitou() {
-      document.getElementById("pedido").classList.add("hidden");
-      document.getElementById("final").classList.remove("hidden");
-    }
-  </script>
+function aceitou() {
+  document.getElementById("pedido").classList.add("hidden");
+  document.getElementById("final").classList.remove("hidden");
+}
+</script>
 </body>
 </html>
