@@ -2,13 +2,13 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Uma Carta Para Você</title>
+  <title>Para Você</title>
   <style>
     body {
       margin: 0;
-      background: #f5f5f5;
+      background: linear-gradient(135deg, #f8f9fa, #eef1f4);
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      color: #222;
+      color: #1a1a1a;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -18,47 +18,57 @@
 
     .card {
       background: #ffffff;
-      padding: 50px;
-      border-radius: 12px;
+      padding: 60px 50px;
+      border-radius: 16px;
       max-width: 600px;
-      border: 1px solid #e0e0e0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       position: relative;
+    }
+
+    .linha {
+      width: 60px;
+      height: 3px;
+      background: #111;
+      margin: 0 auto 30px auto;
+      border-radius: 2px;
     }
 
     h1 {
       font-weight: 500;
-      margin-bottom: 30px;
-      color: #111;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
     }
 
     h2 {
       font-weight: 500;
-      color: #000;
+      margin-top: 20px;
     }
 
     .frase {
       display: none;
       font-size: 1.1rem;
       margin: 15px 0;
-      color: #333;
+      color: #444;
       animation: fadeIn 0.8s ease-in-out;
     }
 
     button {
       margin-top: 25px;
-      padding: 10px 25px;
+      padding: 10px 28px;
       font-size: 0.95rem;
-      border-radius: 6px;
-      border: none;
+      border-radius: 30px;
+      border: 1px solid #111;
       cursor: pointer;
-      background: #111;
-      color: white;
+      background: transparent;
+      color: #111;
       transition: 0.3s;
       position: relative;
     }
 
     button:hover {
-      background: #333;
+      background: #111;
+      color: #fff;
     }
 
     .hidden {
@@ -66,13 +76,14 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <div class="card">
+    <div class="linha"></div>
     <h1>Para Você</h1>
 
     <p class="frase">Desde o dia em que você entrou na minha vida, tudo mudou.</p>
@@ -90,8 +101,7 @@
     </div>
 
     <div id="final" class="hidden">
-      <h2>Obrigado por existir.</h2>
-      <p>Eu escolho você todos os dias.</p>
+      <h2>Eu escolho você todos os dias.</h2>
     </div>
   </div>
 
